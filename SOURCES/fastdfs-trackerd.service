@@ -1,0 +1,15 @@
+[Unit]
+Description=FastDFS is an open source high performance distributed file system.
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/fastdfs-trackerd /etc/fdfs/tracker.conf
+TimeoutStopSec=5
+KillMode=process
+KillSignal=SIGINT
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
